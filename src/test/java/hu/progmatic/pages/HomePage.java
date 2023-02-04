@@ -10,6 +10,8 @@ public class HomePage {
     WebDriver driver;
     WebDriverWait wait;
     By headerBy = By.id("top");
+    By AppointmentButtonBy = By.id("btn-make-appointment");
+
 
     public HomePage(WebDriver driver, WebDriverWait wait) {
         this.driver = driver;
@@ -22,4 +24,15 @@ public class HomePage {
         Assert.assertTrue(headerElement.isDisplayed());
         System.out.println("Homepage loaded properly.");
     }
+
+    public void checkMakeAppointmentButton(){
+        //Megkeresi a Make Appointment gombot
+        WebElement AppointmentButton = driver.findElement(AppointmentButtonBy);
+        AppointmentButton.click();
+        //Ellenőrzés
+        Assert.assertEquals(driver.getCurrentUrl(),"https://katalon-demo-cura.herokuapp.com/profile.php#login");
+        System.out.println("clickAppointmentButton Test Ok!");
+    }
+
+
 }
